@@ -1,12 +1,14 @@
 from django.db import models
+from jobseeker.models import Job
 
 # Create your models here.
 
 class Applicant(models.Model):
-    job=models.ForeignKey(on_delete=models.CASCADE)
+    job=models.ForeignKey(Job,on_delete=models.CASCADE)
     user=models.CharField(max_length=25)
     created=models.CharField(max_length=25)
-    options=(("apply","apply"),("cancelled","cancelled"))
+    options=(("apply","apply"),
+             ("cancelled","cancelled"))
     status=models.CharField(max_length=80,choices=options,default="apply")
 
 class Profile(models.Model):
