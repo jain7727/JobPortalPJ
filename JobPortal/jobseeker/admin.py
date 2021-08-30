@@ -74,5 +74,6 @@ class UserAdmin(BaseUserAdmin):
     ordering = ('email',)
     filter_horizontal = ()
 
+
 admin.site.register(Profile)
 admin.site.register(Applicant)
