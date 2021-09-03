@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{%extends 'base.html'%}
+{%block body_block%}
+
+<div class="row mt-5">
+    <div class="col-4 text-center">
+        <a class="btn btn-outline-secondary" href="{%url 'userlogin'%}">Jobseeker Login</a>
+    </div>
+    <div class="col-4 text-center">
+        <a class="btn btn-outline-secondary" href="#">Employer Login</a>
+    </div>
+    <div class="col-4 text-center">
+        <a class="btn btn-outline-info" href="{%url 'signup'%}">Create Account?</a>
+    </div>
+</div>
+
+
+{%endblock%}

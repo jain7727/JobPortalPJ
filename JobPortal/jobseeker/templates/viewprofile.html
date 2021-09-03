@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{%extends 'base.html'%}
+{%block body_block%}
+
+{%for profile in profiles%}
+<div class="row" style="font-size:1.22rem">
+    <div class="col-3"></div>
+    <div class="col-3">Name</div>
+    <div class="col-3">{{profile.name}}</div>
+    <div class="col-3"></div>
+</div>
+<div class="row" style="font-size:1.22rem">
+    <div class="col-3"></div>
+    <div class="col-3">Email</div>
+    <div class="col-3">{{profile.email}}</div>
+    <div class="col-3"></div>
+</div>
+<div class="row" style="font-size:1.22rem">
+    <div class="col-3"></div>
+    <div class="col-3">Phone</div>
+    <div class="col-3">{{profile.mobile}}</div>
+    <div class="col-3"></div>
+</div>
+<div class="row" style="font-size:1.22rem">
+    <div class="col-3"></div>
+    <div class="col-3">Date of Birth</div>
+    <div class="col-3">{{profile.dob}}</div>
+    <div class="col-3"></div>
+</div>
+<div class="row" style="font-size:1.22rem">
+    <div class="col-3"></div>
+    <div class="col-3">Gender</div>
+    <div class="col-3">{{profile.gender}}</div>
+    <div class="col-3"></div>
+</div>
+<div class="row" style="font-size:1.22rem">
+    <div class="col-3"></div>
+    <div class="col-3">Address</div>
+    <div class="col-3">{{profile.address}}</div>
+    <div class="col-3"></div>
+</div>
+<div class="row" style="font-size:1.22rem">
+    <div class="col-3"></div>
+    <div class="col-3">Graduation</div>
+    <div class="col-3">{{profile.graduation}}</div>
+    <div class="col-3"></div>
+</div>
+<div class="row" style="font-size:1.22rem">
+    <div class="col-3"></div>
+    <div class="col-3">Post Graduation</div>
+    <div class="col-3">{{profile.post_graduation}}</div>
+    <div class="col-3"></div>
+</div>
+<div class="row" style="font-size:1.22rem">
+    <div class="col-3"></div>
+    <div class="col-3">Experiance</div>
+    <div class="col-3">{{profile.experiance}}</div>
+    <div class="col-3"></div>
+</div>
+<div class="row" style="font-size:1.22rem">
+    <div class="col-3"></div>
+    <div class="col-3">Resume</div>
+    <div class="col-3">{{profile.resume}}</div>
+    <div class="col-3"></div>
+</div>
+
+{%endfor%}
+
+{%endblock%}

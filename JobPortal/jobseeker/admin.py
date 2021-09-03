@@ -1,11 +1,11 @@
 from django.contrib import admin
-from jobseeker.models import Profile,Applicant
+from django import forms
+from jobseeker.models import Profile,Applicant,MyUser
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
-from jobseeker.models import MyUser
 
 # Register your models here.
 
@@ -17,7 +17,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = MyUser
-        fields = ('email', 'role' ,'username')
+        fields = ('email','role','username')
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -74,6 +74,7 @@ class UserAdmin(BaseUserAdmin):
     ordering = ('email',)
     filter_horizontal = ()
 
+admin.site.register(MyUser,UserAdmin)
 
 admin.site.register(Profile)
 admin.site.register(Applicant)
