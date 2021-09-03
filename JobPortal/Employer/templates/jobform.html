@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+        <div class="container">
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-6">
+                    <form action="" method="post">
+                        {%csrf_token%}
+                        {{form.as_p}}
+
+                        <input type="submit" value="Create">
+                    </form>
+                </div>
+                <div class="col-3"></div>
+            </div>
+        </div>
+
+
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col"></div>-->
+<!--        <div class="col-12">-->
+<!--            <table class="table">-->
+<!--                <tr>-->
+<!--                    <th>title</th>-->
+<!--                    <th>description</th>-->
+<!--                    <th>company_name</th>-->
+<!--                    <th>company_description</th>-->
+<!--                    <th>location</th>-->
+<!--                    <th>type</th>-->
+<!--                    <th>category</th>-->
+<!--                    <th>created_at</th>-->
+<!--                    <th>last_date</th>-->
+<!--                </tr>-->
+<!--                        {%for details in jobdescription%}-->
+<!--                <tr>-->
+
+
+<!--                    <td>{{details.title}}</td>-->
+<!--                    <td>{{details.description}}</td>-->
+<!--                    <td>{{details.company_name}}</td>-->
+<!--                    <td>{{details.company_description}}</td>-->
+<!--                    <td>{{details.location}}</td>-->
+<!--                    <td>{{details.type}}</td>-->
+<!--                    <td>{{details.category}}</td>-->
+<!--                    <td>{{details.created_at}}</td>-->
+<!--                    <td>{{details.last_date}}</td>-->
+
+
+<!--                </tr>-->
+<!--                {%endfor%}-->
+<!--            </table>-->
+<!--        </div>-->
+<!--        <div class="col"></div>-->
+<!--    </div>-->
+<!--</div>-->
+</body>
+</html>

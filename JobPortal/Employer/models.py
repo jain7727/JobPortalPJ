@@ -10,7 +10,7 @@ from django.utils import timezone
 class Job(models.Model):
     JOB_TYPE=(
         ("part-time","part-time"),
-        ("full-time","full=time"),
+        ("full-time","full-time"),
         ("internship","internship")
     )
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -19,12 +19,13 @@ class Job(models.Model):
     location = models.CharField(max_length=150)
     type = models.CharField(choices=JOB_TYPE, max_length=10)
     category = models.CharField(max_length=100)
-    last_date = models.DateTimeField()
+    last_date = models.DateField()
     company_name = models.CharField(max_length=100)
     company_description = models.CharField(max_length=300)
     # website = models.CharField(max_length=100, default="")
     created_at = models.DateTimeField(default=timezone.now)
     filled = models.BooleanField(default=False)
+    active_status=models.BooleanField(default=True)
 
     def _str_(self):
         return self.title
