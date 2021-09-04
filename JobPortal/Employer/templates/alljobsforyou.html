@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1 style="text-align:center">List of all Jobs</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4"></div>
+            <div class="col-4">
+                <form action="" method="post">
+                    {%csrf_token%}
+                    {{form.as_p}}
+
+                    <input type="submit" class="btn btn-primary" name="Search">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="height:100px"></div>
+    <!--<div class="container" style="margin-left:100px;margin-right:100px;width:100%;">-->
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            {%for details in jobdescriptions%}
+
+
+
+                <div class="card" style="width:100%;">
+                    <!--  <img src="..." class="card-img-top" alt="...">-->
+                    <div class="card-body">
+                        <h5 class="card-title">{{details.title}}</h5>
+                        <p class="card-text">{{details.description}}</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"> <span> <h5>Company name : {{details.company_name}}</h5></span></li>
+                            <li class="list-group-item">Company description : {{details.company_description}}</li>
+                            <li class="list-group-item">Location : {{details.location}}</li>
+                            <li class="list-group-item">Type : {{details.type}}</li>
+                            <li class="list-group-item">Category : {{details.category}}</li>
+                            <li class="list-group-item">Created at : {{details.created_at}}</li>
+                            <li class="list-group-item">Last date : {{details.last_date}}</li>
+                        </ul>
+
+                        <div class="container" style="text-align:center">
+
+                            <a href="#" class="btn btn-primary">Apply</a>
+
+<!--                            <a href="{%url 'jobsupdate' details.id%}" class="btn btn-success">Update</a>-->
+<!--                            <a href="{%url 'jobsdelete' details.id%}" class="btn btn-danger">Delete</a>-->
+
+                        </div>
+                    </div>
+                </div>
+
+            <div class="container" style="height:50px;"></div>
+            {%endfor%}
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <!--    </div>-->
+
+</body>
+
+</html>
+
+
+<!--                    <th>description</th>-->
+<!--                    <th>company_name</th>-->
+<!--                    <th>company_description</th>-->
+<!--                    <th>location</th>-->
+<!--                    <th>type</th>-->
+<!--                    <th>category</th>-->
+<!--                    <th>created_at</th>-->
+<!--                    <th>last_date</th>-->
