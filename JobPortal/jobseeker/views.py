@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from jobseeker.models import MyUser,Applicant,Profile
+from Employer.models import Job
 from django.views.generic import CreateView,UpdateView,TemplateView,ListView,DetailView
 from django.urls import reverse_lazy
 from django.contrib.auth import authenticate,login,logout
@@ -40,18 +41,55 @@ def user_signout(request):
     logout(request)
     return redirect("userlogin")
 
-#  --------------------------------------------------------------------------------------------------------------------
+#  ----------------------------------------- Profile ------------------------------------------------------------------
+
 class HomePage(TemplateView):
     template_name = "home.html"
 
 class ProfileCreateView(CreateView):
     model = Profile
-    form_class = forms.ProfileAddForm
     template_name = "profileadd.html"
-    success_url = reverse_lazy("profileadd")
+    form_class = forms.ProfileAddForm
+
+    def post(self, request, *args, **kwargs):
+        form=self.form_class(request.POST,request.FILES)
+        if form.is_valid():
+            timesheet=form.save(commit=False)
+            timesheet.user=request.user
+            timesheet.save()
+            return redirect("home")
 
 class ViewProfile(ListView):
     model = Profile
     template_name = "viewprofile.html"
     context_object_name = "profiles"
+    def get_queryset(self):
+        return Profile.objects.filter(user=self.request.user)
 
+class ProfileDetailView(DetailView):
+    model = Profile
+    template_name = "detailprofile.html"
+    context_object_name = "profile"
+
+class ProfileUpdateView(UpdateView):
+    model = Profile
+    form_class = forms.ProfileAddForm
+    template_name = "updateprofile.html"
+    success_url = reverse_lazy("viewprofile")
+
+#  -------------------------------------------------- JOB PROFILE ------------------------------------------------------
+
+class ListAllJobs(ListView):
+    model = Job
+    template_name = "listalljobs.html"
+    context_object_name = "jobs"
+
+class JobDetailView(DetailView):
+    model = Job
+    template_name = "jobdetailview.html"
+    context_object_name = "job"
+
+class JobUserProfileUpdateView(UpdateView):
+    model = Profile
+    form_class = forms.ProfileAddForm
+    template_name = "updateprofile.html"

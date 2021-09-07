@@ -74,9 +74,8 @@ class MyUser(AbstractBaseUser):
 
 
 class Profile(models.Model):
-    myuser=models.ForeignKey(MyUser,on_delete=models.CASCADE,null=True)
     job=models.ForeignKey(Job,on_delete=models.CASCADE,null=True)
-    user=models.CharField(max_length=30)
+    user = models.CharField(max_length=120)
     name=models.CharField(max_length=40)
     email=models.EmailField(max_length=40)
     mobile=models.IntegerField(max_length=12)
@@ -94,9 +93,9 @@ class Profile(models.Model):
 class Applicant(models.Model):
     profile=models.ForeignKey(Profile,on_delete=models.CASCADE,null=True)
     jobs=models.ForeignKey(Job,on_delete=models.CASCADE,null=True)
-    user=models.CharField(max_length=25)
+    user=models.CharField(max_length=120)
 
-    created=models.CharField(max_length=25)
+    created=models.CharField(max_length=120)
     options=(("apply","apply"),
              ("cancelled","cancelled"))
 

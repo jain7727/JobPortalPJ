@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{%extends 'base.html'%}
+{%block body_block%}
+
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <h3>Job Profile</h3>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{job.title}}</h5>
+                <p class="card-text">{{job.company_name}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{job.description}}</li>
+                <li class="list-group-item">{{job.company_description}}</li>
+                <li class="list-group-item">{{job.location}}</li>
+                <li class="list-group-item">{{job.type}}</li>
+                <li class="list-group-item">{{job.category}}</li>
+                <li class="list-group-item">Post at:{{job.created_at}}</li>
+                <li class="list-group-item">Last Date:{{job.last_date}}</li>
+            </ul>
+            <div class="card-body">
+                <a href="{%url 'listalljobs'%}" class="btn btn-outline-info">Back</a>
+                <a href="#" class="btn btn-outline-success">Apply</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-4"></div>
+</div>
+
+{%endblock%}
