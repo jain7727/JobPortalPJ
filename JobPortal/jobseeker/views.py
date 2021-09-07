@@ -31,6 +31,7 @@ class UserSigninView(TemplateView):
                 login(request,user)
                 if request.user.role=="jobseeker":
                     return redirect("profileadd")
+
                 else:
                     return redirect("home")
             else:

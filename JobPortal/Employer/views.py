@@ -4,7 +4,10 @@ from Employer.forms import JobCreationForm,JobSearchForm
 from django.urls import reverse_lazy
 from django.views.generic import CreateView,ListView,UpdateView,DeleteView,TemplateView
 from django.views.generic.edit import DeleteView
+from django.contrib.auth import authenticate,login,logout
+from  jobseeker.models import MyUser
 
+from Employer.forms import EmployerLoginForm
 
 # Create your views here.
 
@@ -70,4 +73,32 @@ class JobDeleteView(DeleteView):
 #
 #     template_name="alljobsforyou.html"
 #     success_url=reverse_lazy("alljobsforyou")
+
+
+class UserSigninView(TemplateView):
+    template_name = "login.html"
+
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context['form']=EmployerLoginForm
+        return context
+
+    def post(self, request, *args, **kwargs):
+        form=EmployerLoginForm(request.POST)
+        if form.is_valid():
+            username=form.cleaned_data["email"]
+            password=form.cleaned_data["password"]
+            user=authenticate(request,username=username,password=password)
+            if user:
+                login(request,user)
+                if request.user.role=="employer":
+                    return redirect("jobform")
+                else:
+                    return redirect("home")
+            else:
+                return render(request,self.template_name,{'form':form})
+
+def user_logout(request):
+    logout(request)
+    return redirect("home")
 

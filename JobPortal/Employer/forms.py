@@ -1,6 +1,9 @@
 from Employer.models import Job
 from django.forms import ModelForm
 from django import forms
+from jobseeker.forms import UserRegistrationForm,UserSigninForm
+# from jobseeker.models import MyUser
+
 
 class JobCreationForm(ModelForm):
     class Meta:
@@ -31,4 +34,9 @@ class JobCreationForm(ModelForm):
 
 class JobSearchForm(forms.Form):
     Job=forms.CharField(widget=forms.TextInput(attrs={"class":"form-control"})),
+
+
+class EmployerLoginForm(forms.Form):
+    email = forms.CharField(max_length=30, widget=(forms.EmailInput(attrs={'class': 'form-control'})))
+    password = forms.CharField(max_length=25, widget=(forms.PasswordInput(attrs={'class': 'form-control'})))
 
